@@ -11,6 +11,9 @@
         <li>
           <router-link to="signup">SignUp</router-link>
         </li>
+        <li>
+          <amplify-sign-out></amplify-sign-out>
+        </li>
       </ul>
     </div>
     <div class="content">
@@ -24,9 +27,12 @@
 </template>
 
 <script>
+import { components } from 'aws-amplify-vue'
+
 export default {
   name: 'app',
   components: {
+    ...components
   }
 }
 </script>
