@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from './components/Home'
 import PageNotFound from './components/PageNotFound'
 import Login from './components/Login'
+import AddNote from './components/AddNote'
 import { AmplifyEventBus } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify'
 
@@ -21,6 +22,10 @@ const router = new VueRouter({
       component: Login
     },
     {
+      path: "/addnote",
+      component: AddNote
+    },
+    {
       path: "*",
       component: PageNotFound
     }
@@ -29,15 +34,11 @@ const router = new VueRouter({
 
 const getUser = () => {
   return Auth.currentAuthenticatedUser().then((data) => {
-    window.console.log("getUser Function");
-    window.console.log(data);
     return data;
   }).catch(() => {
-    window.console.log("No user");
     return null;
   });
 }
-
 
 AmplifyEventBus.$on('authState', async(state) => {
   window.console.log(state);
@@ -46,11 +47,13 @@ AmplifyEventBus.$on('authState', async(state) => {
   router.push("/");
 });
 
-router.beforeResolve(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const user = await getUser();
-  window.console.log("Before Resolve");
-  window.console.log(user);
-  next();
+  if(!user && (to.path !== '/login')) {
+    next('/login');
+  } else {
+    next();
+  }
 });
 
 export default router

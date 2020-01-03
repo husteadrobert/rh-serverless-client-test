@@ -12,6 +12,9 @@
           <router-link to="signup">SignUp</router-link>
         </li>
         <li>
+          <router-link to="addnote">Add Note</router-link>
+        </li>
+        <li>
           <amplify-sign-out></amplify-sign-out>
         </li>
       </ul>
