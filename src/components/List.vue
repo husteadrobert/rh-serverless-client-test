@@ -8,7 +8,6 @@
         </router-link>
       </li>
     </ul>
-    <h2>{{ notes }}</h2>
   </div>
 </template>
 

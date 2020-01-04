@@ -20,7 +20,6 @@ export default {
   methods: {
     getData() {
       Amplify.API.get("notes", `/notes/${this.$route.params.id}`).then((res) => {
-        window.console.log(res);
         this.note = res.content;
         if (res.attachment) {
           this.filename = res.attachment;
