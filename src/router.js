@@ -4,6 +4,7 @@ import Home from './components/Home'
 import PageNotFound from './components/PageNotFound'
 import Login from './components/Login'
 import AddNote from './components/AddNote'
+import List from './components/List'
 import { AmplifyEventBus } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify'
 
@@ -24,6 +25,10 @@ const router = new VueRouter({
     {
       path: "/addnote",
       component: AddNote
+    },
+    {
+      path: "/list",
+      component: List
     },
     {
       path: "*",

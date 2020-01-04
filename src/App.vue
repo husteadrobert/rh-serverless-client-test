@@ -6,6 +6,9 @@
           <router-link to="/" exact>Home</router-link>
         </li>
         <li>
+          <router-link to="/list">List Notes</router-link>
+        </li>
+        <li>
           <router-link to="login">Login</router-link>
         </li>
         <li>
