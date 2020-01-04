@@ -5,6 +5,7 @@ import PageNotFound from './components/PageNotFound'
 import Login from './components/Login'
 import AddNote from './components/AddNote'
 import List from './components/List'
+import Note from './components/Note'
 import { AmplifyEventBus } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify'
 
@@ -29,6 +30,11 @@ const router = new VueRouter({
     {
       path: "/list",
       component: List
+    },
+    {
+      path: "/notes/:id",
+      component: Note,
+      name: "note"
     },
     {
       path: "*",

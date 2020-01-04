@@ -1,6 +1,13 @@
 <template>
   <div>
     <h1>List Page</h1>
+    <ul v-bind:key=note.noteId v-for="note in notes">
+      <li>
+        <router-link :to="{ name: 'note', params: { id: note.noteId }}">
+          {{ note.content }}
+        </router-link>
+      </li>
+    </ul>
     <h2>{{ notes }}</h2>
   </div>
 </template>
@@ -17,7 +24,6 @@ export default {
   methods: {
     getData() {
       Amplify.API.get("notes", "/notes").then((res) => {
-      window.console.log(res);
       this.notes = res;
       });
     }
